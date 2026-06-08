@@ -1,0 +1,9 @@
+openai
+anthropic
+python-dotenv
+pydantic
+streamlit
+pypdf
+python-docx
+pytest
+ruff
