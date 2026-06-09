@@ -22,10 +22,7 @@ This file provides functions  for:
 '''
 
 
-# Template
-# ---------------------------------------------
-# 
-# ---------------------------------------------
+
 
 # ---------------------------------------------
 # Importing libraries and setup configuration

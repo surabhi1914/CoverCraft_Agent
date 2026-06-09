@@ -30,36 +30,7 @@ from pypdf import PdfReader
 from docx import Document
 from pathlib import Path
 import os
-import re
 from src.utils.text_cleaning import prepare_text_for_llm
-## --------------------------------------
-# Setup Configurations
-# ---------------------------------------
-
-# Set Paths
-# BASE_DIR = Path.cwd().parent.parent
-# DATA_DIR = BASE_DIR / "data"
-# RAW_DATA = DATA_DIR / "raw"
-
-# RESUME = RAW_DATA / "RESUME.DOCX"
-# MOTIVATION =  RAW_DATA / "motivation.txt"
-# PROFILE = RAW_DATA / "profile.md"
-# ADDITIONAL = RAW_DATA / "additional.pdf"
-
-
-# OUTPUT_DIR = DATA_DIR / "processed"
-# OUTPUT_FILE = OUTPUT_DIR / "source.json"
-
-
-# print(BASE_DIR)
-# print(f"Data directory: {DATA_DIR} |  Data directory exists: {DATA_DIR.exists()}")
-# print(f"Raw directory: {RAW_DATA} |  Raw directory exists: {RAW_DATA.exists()}")
-# print(f"Output directory: {OUTPUT_DIR} |  Output directory exists: {OUTPUT_DIR.exists()}")
-# print(f"Profile File: {PROFILE} |  Profile File exists: {PROFILE.exists()}")
-# print(f"Resume File: {RESUME} |  Resume File exists: {RESUME.exists()}")
-# print(f"Additional File: {ADDITIONAL} |  Additonal File exists: {ADDITIONAL.exists()}")
-# print(f"Motivation File: {MOTIVATION} |  Motivation File exists: {MOTIVATION.exists()}")
-# print(f"Output File: {OUTPUT_FILE} |  Output File exists: {OUTPUT_FILE.exists()}")
 
 # --------------------------------------
 # Helper Functions
@@ -160,31 +131,3 @@ def parse_document(path, name="Unknown") -> dict:
     parsed_text = build_document_metadata(path.name, type_of_file, text, word_count, char_count)
     
     return parsed_text
-
-
-# --------------------------------------
-#Execute the functions
-# resume = parse_file(RESUME, "RESUME")
-# print(f"Output: {resume}")
-
-# additional = parse_file(ADDITIONAL, "additional")
-# print(f"Output: {additional}")
-
-# profile = parse_file(PROFILE, 'profile')
-# print(f"Output: {profile}")
-
-# motivation =  parse_file(MOTIVATION, "Motivation")
-# print(f"Output: {motivation}")
-
-
-# --------------------------------------
-
-# --------------------------------------
-# Save the file
-# --------------------------------------
-
-# with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-#     json.dump(resume,f)
-#     json.dump(additional,f)
-#     json.dump(profile,f)
-#     json.dump(motivation,f)
