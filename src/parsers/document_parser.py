@@ -31,6 +31,7 @@ from docx import Document
 from pathlib import Path
 import os
 import re
+from src.utils.text_cleaning import prepare_text_for_llm
 ## --------------------------------------
 # Setup Configurations
 # ---------------------------------------
@@ -82,11 +83,11 @@ def build_document_metadata(name, type_of_file, text, word_count, char_count) ->
     }
 
 # Clean the text
-def clean_extracted_text(text) -> str:
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r"\n{3,}", "\n", text)
-    return text.strip()
+# def clean_extracted_text(text) -> str:
+#     text = text.replace("\r\n", "\n").replace("\r", "\n")
+#     text = re.sub(r"[ \t]+", " ", text)
+#     text = re.sub(r"\n{3,}", "\n", text)
+#     return text.strip()
 
 
 
@@ -150,7 +151,7 @@ def parse_document(path, name="Unknown") -> dict:
         text = read_text_file(path, name, type_of_file)
     else:
         raise ValueError(f"Unsupported file type: ({type_of_file})")
-    text = clean_extracted_text(text)
+    text = prepare_text_for_llm(text)
     if not text:
         raise ValueError(f"No text could be extracted from {path.name}")
     word_count = len(text.split())
