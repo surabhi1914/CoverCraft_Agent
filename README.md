@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-App-red)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-In&Progress-lightgrey)](#development-roadmap)
+[![Status](https://img.shields.io/badge/Status-In%26Progress-lightgrey)](#development-roadmap)
 
 An AI-powered cover letter generation agent designed to create personalized, evidence-backed cover letters through a multi-agent pipeline.
 
@@ -19,7 +19,6 @@ CoverCraft Agent will help turn job descriptions, resumes or CVs, additional use
 
 - Python
 - OpenAI API
-- Anthropic API
 - Pydantic
 - Streamlit
 - pypdf
