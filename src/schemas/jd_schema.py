@@ -4,12 +4,10 @@
 Purpose of this file: defines the structure for a parsed job description.
 
 This file:
-1. 
-2.
-3.
-4. Validate data models
+
+1. Validate data models
 Pydantic model - A class that ensures incoming data matches the expected types and structure.
-5. Expected output format:
+2. Expected output format:
 {
     "company_name": "Google",
     "role_title": "Data Scientist Intern",
@@ -24,10 +22,6 @@ Pydantic model - A class that ensures incoming data matches the expected types a
 '''
 
 
-# Template
-# ---------------------------------------------
-# 
-# ---------------------------------------------
 
 # ---------------------------------------------
 # Importing Libraries

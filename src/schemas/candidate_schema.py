@@ -4,18 +4,15 @@
 Purpose of this file: Tells the project what a "candidate profile" should look like after we analyze source documents
 
 This file:
-1.
-2.
-3.
-4. 
+1. Created pydantic model:
+    a) Candidate Profile
+    b) Experience Item
+    c)Education item
+    d) Achievements
+    e)Project Item 
 
 '''
 
-
-# Template
-# ---------------------------------------------
-# 
-# ---------------------------------------------
 
 # ---------------------------------------------
 # Importing Libraries
