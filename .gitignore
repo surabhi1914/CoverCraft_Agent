@@ -63,3 +63,6 @@ outputs/
 generated/
 cover_letters/
 *.generated.*
+
+#test file
+test.py

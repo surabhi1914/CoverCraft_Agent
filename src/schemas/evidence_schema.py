@@ -57,7 +57,7 @@ class EvidenceMatch(BaseModel):
     match_strength: Literal["strong", "medium", "weak", "none"] = Field(default="none", description="Strength of the match")
     evidence_source: str = Field(default = "Unknown", description="Evidence source")
     suggested_angle: str = Field(default = "Unknown", description="Suggested angle based on the role")
-    use_in_cover_letter: List[str] = Field(default_factory=list, description="Keywords to use in the Cover letter ")
+    use_in_cover_letter: bool = Field(default = True, description="Whether this evidence should be used in the final cover letter.")
 
 
 class UnsupportedRequirement(BaseModel):
