@@ -1,7 +1,7 @@
 # src/schemas/output_schema.py
 
 '''
-Purpose of this file:
+Purpose of this file: defines the final output structure of your cover letter agent.
 
 This file:
 1. Created 5 pydantic model
