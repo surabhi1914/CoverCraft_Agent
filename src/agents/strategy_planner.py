@@ -28,6 +28,7 @@ from src.schemas.jd_schema import JobDescriptionAnalysis
 from src.schemas.candidate_schema import CandidateProfile
 from src.schemas.evidence_schema import EvidenceMap
 from src.utils.llm_client import generate_text
+from src.utils.json_utils import extract_json_from_response
 from src.config import DEFAULT_METHOD, DEFAULT_LENGTH, DEFAULT_TONE
 
 # ---------------------------------------------
@@ -105,20 +106,6 @@ def build_strategy_prompt(
     {evidence_data}
     """
 
-    
-
-def extract_json_from_response(response_text: str) -> dict:
-    cleaned = response_text.strip()
-
-    if not cleaned:
-        raise ValueError("LLM response is empty")
-    
-    cleaned = cleaned.replace("```json", "").replace("```", "").strip()
-
-    try:
-        return json.loads(cleaned)
-    except json. JSONDecodeError as e:
-        raise ValueError(f" Failed to parse JSON from LLM response: {e}")
     
 
 def plan_cover_letter_strategy(
