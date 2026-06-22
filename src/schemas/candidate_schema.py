@@ -19,7 +19,6 @@ This file:
 # ---------------------------------------------
 from typing import List
 from pydantic import BaseModel, Field
-from datetime import date
 
 # ---------------------------------------------
 # Pydantic Model
@@ -27,65 +26,37 @@ from datetime import date
 
 
 class EducationItem(BaseModel):
-    institution: str = Field(
-        default= "Unknown",
-        description="Name of the university"
-
-    )
-    degree: str = Field(
-        default= "Unknown",
-        description="Name of the degree achieved"
-
-    )
-    field_of_study: str = Field(
-        default= "Computer Science", #if you are not doing computer science, you can change it. Since this is for my use, I am populating it as CS
-        description="Name of the field of study"
-
-    )
-    start_date: date = Field(
-        default= date(2000, 8, 1), # random start date.
-        description="Start date of the program"
-
-    )
-    end_date: date = Field(
-        default= date(2000, 5, 1), # random end date.
-        description="End date of the program"
-
-    )
-    grade: float = Field(
-        default = 4,
-        description = "Grade I achieved in this program"
-    )
-
-    details: List[str] = Field(
-        default= ["Unknown"],
-        description="Details regarding the program like coursework etc"
-    )
-
+    institution: str = Field(default="", description="Name of the school, university, or institution.")
+    degree: str = Field(default="", description="Degree or credential earned.")
+    field_of_study: str = Field(default="", description="Major, concentration, or area of study.")
+    start_date: str = Field(default="", description="Start date if available.")
+    end_date: str = Field(default="", description="End date or expected graduation date if available.")
+    grade: str = Field(default="", description="Grade or GPA if available.")
+    details: List[str] = Field(default_factory=list, description="Relevant coursework, honors, or education details.")
 
 class ExperienceItem(BaseModel):
-    role_title: str = Field(default="Unknown", description="Job title")
-    organization: str = Field(default="Unknown", description="Company name")
-    start_date: date = Field(default= date(2021,8,16), description = "Start date of the job")
-    end_date: date = Field(default=date(2021,8,16), description="End date of the job")
-    location: str = Field(default="Unknown", description="Location of the job")
-    responsibilities: List[str] = Field(default_factory=list, description="responsibilities for the role")
-    achievements: List[str] = Field(default_factory=list, description="achievements")
-    skills_used: List[str] = Field(default_factory=list, description="skills I gained in this role")
+    role_title: str = Field(default="", description="Job title.")
+    organization: str = Field(default="", description="Company, lab, nonprofit, or organization name.")
+    start_date: str = Field(default="", description="Start date if available.")
+    end_date: str = Field(default="", description="End date if available.")
+    location: str = Field(default="", description="Location of the role if available.")
+    responsibilities: List[str] = Field(default_factory=list, description="Responsibilities for the role.")
+    achievements: List[str] = Field(default_factory=list, description="Achievements from this role.")
+    skills_used: List[str] = Field(default_factory=list, description="Skills used in this role.")
 
 
 class ProjectItem(BaseModel):
-    project_name: str = Field(default="Unknown", description="Project name")
-    project_summary: str = Field(default="Unknown", description="Short description")
-    tools_used: List[str] = Field(default_factory=list, description="Tools used")
-    method_used: List[str] = Field(default_factory=list, description="Method used for this project")
-    outcomes: List[str] = Field(default_factory=list, description="Outcomes from this project")
-    relevance_tags: List[str] = Field(default_factory=list, description="Keywords for this project")
+    project_name: str = Field(default="", description="Project name.")
+    project_summary: str = Field(default="", description="Short project description.")
+    tools_used: List[str] = Field(default_factory=list, description="Tools used.")
+    methods_used: List[str] = Field(default_factory=list, description="Methods used for this project.")
+    outcomes: List[str] = Field(default_factory=list, description="Outcomes from this project.")
+    relevance_tags: List[str] = Field(default_factory=list, description="Keywords for this project.")
 
 class AchievementItem(BaseModel):
-    title: str = Field(default="", description="Achievement title")
-    category: str = Field(default="Unknown", description="Category of achievement")
-    description: List[str] = Field(default_factory=list, description="Additional details")
+    title: str = Field(default="", description="Achievement title.")
+    category: str = Field(default="", description="Category of achievement.")
+    description: str = Field(default="", description="Additional details.")
 
 
 

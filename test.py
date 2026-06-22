@@ -1,11 +1,12 @@
-from src.agents.jd_analyzer import analyze_job_description
+from src.agents.candidate_builder import build_candidate_profile
 
-sample_jd = """
-We are hiring a Data Analyst to work with SQL, Python, dashboards,
-stakeholders, and product teams. The role requires strong communication
-and experience turning data into insights.
+candidate_text = """
+Surabhi Nair is a Master of Computer Science graduate from North Carolina State University.
+She worked on BioVerify, a species verification pipeline using LLaMA 3, GroundingDINO, and BioCLIP2.
+The project improved species-level accuracy from 54.98% to 71.93%.
+Skills include Python, SQL, Neo4j, PyTorch, TensorFlow, and data analytics.
 """
 
-result = analyze_job_description(sample_jd)
+profile = build_candidate_profile(candidate_text)
 
-print(result.model_dump())
+print(profile.model_dump())
