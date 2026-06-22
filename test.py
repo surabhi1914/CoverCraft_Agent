@@ -3,6 +3,7 @@ from src.schemas.candidate_schema import CandidateProfile, ProjectItem
 from src.schemas.evidence_schema import EvidenceMap, EvidenceMatch, UnsupportedRequirement
 from src.agents.strategy_planner import build_strategy_prompt
 from src.agents.draft_generator import generate_cover_letter_draft
+from src.agents.critic import build_critic_prompt
 
 
 # 1. Create fake JD analysis
@@ -106,7 +107,21 @@ strategy = {
 }
 
 
-draft = generate_cover_letter_draft(
+draft = """
+Dear Hiring Manager,
+
+I am excited to apply for the Machine Learning Engineer role. My background in Python,
+machine learning, and research projects makes me a strong fit for this opportunity.
+
+In my BioVerify project, I built an AI pipeline for species verification using LLaMA 3,
+GroundingDINO, and BioCLIP2. This work helped me develop strong applied machine learning
+and computer vision skills.
+
+Thank you for your time and consideration.
+"""
+
+prompt = build_critic_prompt(
+    draft=draft,
     jd_analysis=jd,
     candidate_profile=candidate,
     evidence_map=evidence_map,
@@ -114,4 +129,4 @@ draft = generate_cover_letter_draft(
     user_instructions="Make it warm but not too long."
 )
 
-print(draft[:1500])
+print(prompt)
