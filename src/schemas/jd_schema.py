@@ -43,8 +43,8 @@ class JobDescriptionAnalysis(BaseModel):
         default = "Unknown",
         description = "Title of the job role"
     )
-    core_responsibilities: str = Field(
-        default = "Unknown",
+    core_responsibilities: List[str] = Field(
+        default_factory=list,
         description = "Main responsibilities of the job role"
     )
     employment_type: str = Field(

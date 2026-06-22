@@ -1,29 +1,11 @@
-from src.schemas.output_schema import (
-    CoverLetterOutput,
-    KeywordCoverageItem,
-    EvidenceUsedItem,
-)
+from src.agents.jd_analyzer import analyze_job_description
 
-keyword = KeywordCoverageItem(
-    keyword="machine learning",
-    included=True,
-    supporting_evidence="BioVerify used LLaMA 3, GroundingDINO, and BioCLIP2.",
-    notes="Included in the technical evidence paragraph."
-)
+sample_jd = """
+We are hiring a Data Analyst to work with SQL, Python, dashboards,
+stakeholders, and product teams. The role requires strong communication
+and experience turning data into insights.
+"""
 
-evidence = EvidenceUsedItem(
-    evidence="Improved species-level accuracy from 54.98% to 71.93%.",
-    source="BioVerify project",
-    where_used="Second paragraph"
-)
+result = analyze_job_description(sample_jd)
 
-output = CoverLetterOutput(
-    cover_letter="Dear Hiring Manager...",
-    role_title="Machine Learning Engineer",
-    company_name="Example Company",
-    keywords_covered=[keyword],
-    evidence_used=[evidence],
-    final_quality_score=8.5
-)
-
-print(output.model_dump())
+print(result.model_dump())
