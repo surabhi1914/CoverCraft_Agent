@@ -68,5 +68,5 @@ def save_text(text: str, path):
     path =  Path(path)
     ensure_directory_exists(path.parent)
     with open(path, "w", encoding="utf-8") as f:
-            data = f.write(text)
+            f.write(text)
 
