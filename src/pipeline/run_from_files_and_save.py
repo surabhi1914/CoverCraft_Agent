@@ -43,6 +43,7 @@ def run_from_files_and_save(
     user_instructions: str = "",
     raw_data_dir: str | Path = RAW_DATA_DIR,
     output_dir: str | Path = OUTPUT_DIR,
+    use_candidate_cache:bool = True
 ) -> Dict[str, Any]:
     """
     Run the cover letter pipeline using candidate files from data/raw
@@ -60,6 +61,7 @@ def run_from_files_and_save(
         length=length,
         user_instructions=user_instructions,
         raw_data_dir=raw_data_dir,
+        use_candidate_cache=use_candidate_cache,
     )
 
     saved_paths = save_pipeline_outputs(

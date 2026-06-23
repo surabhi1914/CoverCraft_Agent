@@ -77,6 +77,13 @@ with st.sidebar:
 
     st.caption("Do not place job descriptions inside `data/raw/`.")
 
+    st.subheader("Pipeline Options")
+    use_candidate_cache = st.checkbox(
+        "Use candidate profile cache",
+        value=True,
+        help="Uses saved candidate profile if data/raw files have not changed.",
+    )
+
 
 st.subheader("Job Description")
 job_description_text = st.text_area(
@@ -151,9 +158,16 @@ if generate_button:
                     tone=tone,
                     length=length,
                     user_instructions=user_instructions,
+                    use_candidate_cache=use_candidate_cache,
                 )
+                
 
             result = output["result"]
+            metadata = result.get("metadata", {})
+
+            st.info(
+                f"Candidate cache used: {metadata.get('used_candidate_cache')} | "
+            )
             saved_paths = output["saved_paths"]
 
             st.success("Cover letter generated successfully.")
@@ -193,3 +207,4 @@ if generate_button:
         except Exception as e:
             st.error("Something went wrong while generating the cover letter.")
             st.exception(e)
+

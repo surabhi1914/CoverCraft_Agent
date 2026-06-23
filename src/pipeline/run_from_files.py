@@ -91,6 +91,8 @@ def run_cover_letter_pipeline_from_files(
     length: str = DEFAULT_LENGTH,
     user_instructions: str = "",
     raw_data_dir: str | Path = RAW_DATA_DIR,
+    use_candidate_cache: bool = True,
+    
 ) -> dict:
     """
     Run the cover letter pipeline using candidate files from data/raw
@@ -108,6 +110,7 @@ def run_cover_letter_pipeline_from_files(
         tone=tone,
         length=length,
         user_instructions=user_instructions,
+        use_candidate_cache=use_candidate_cache,
     )
 
     return result

@@ -27,7 +27,7 @@ This file:
 # ---------------------------------------------
 # Importing Libraries
 # ---------------------------------------------
-from src.agents.candidate_builder import build_candidate_profile
+from src.pipeline.candidate_profile_cache import get_or_build_candidate_profile
 from src.agents.jd_analyzer import analyze_job_description
 from src.agents.evidence_matcher import match_evidence
 from src.agents.strategy_planner import plan_cover_letter_strategy
@@ -60,13 +60,17 @@ def run_cover_letter_pipeline(
     tone: str = DEFAULT_TONE,
     length: str = DEFAULT_LENGTH,
     user_instructions: str = "",
+    use_candidate_cache: bool = True,
 ) -> dict:
     validate_pipeline_inputs(
         candidate_source_text=candidate_source_text,
         job_description_text=job_description_text
     )
 
-    candidate_profile = build_candidate_profile(candidate_source_text)
+    candidate_profile, used_candidate_cache = get_or_build_candidate_profile(
+    candidate_source_text=candidate_source_text,
+    use_cache=use_candidate_cache,
+)
 
     jd_analysis = analyze_job_description(job_description_text)
 
@@ -116,6 +120,10 @@ def run_cover_letter_pipeline(
     )
 
     return {
+        "metadata": {
+            "used_candidate_cache": used_candidate_cache,
+            "use_candidate_cache": use_candidate_cache,
+        },
         "candidate_profile": candidate_profile.model_dump(),
         "jd_analysis": jd_analysis.model_dump(),
         "evidence_map": evidence_map.model_dump(),
